@@ -13,5 +13,7 @@ function Start () {
 }
 
 function Update () {
-	
+	if (Input.GetKeyDown(KeyCode.Alpha1)){
+		Instantiate(spellBook.spellOne, transform.position, transform.rotation);
+	}
 }
