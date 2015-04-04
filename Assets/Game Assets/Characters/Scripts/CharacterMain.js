@@ -10,3 +10,6 @@ function Start () {
 function Update () {
 
 }
+
+function ChangeMana(manaVal: float){
+}
