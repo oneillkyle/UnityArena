@@ -14,7 +14,7 @@ function Start () {
 }
 
 function Update () {
-	if (Input.GetKeyDown(KeyCode.Alpha1)){
+	if (Input.GetButtonDown('Fire1')){
 		Instantiate(spellBook.spellOne, transform.position, transform.rotation);
 	}
 	transform.rotation = pivot.rotation;
