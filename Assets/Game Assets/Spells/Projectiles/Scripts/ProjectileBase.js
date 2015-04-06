@@ -1,9 +1,9 @@
 ﻿#pragma strict
 
-public class Projectile extends Spell{
+public class Projectile{
 	var velocity: float;
 	var projectile: GameObject;
-	var spawnObject: Transform;
+	var castedFrom: Transform;
 	var forwardMultiplier: float = 2f;
 	var collide: boolean = false;
 	var collision: Collision;
@@ -12,8 +12,12 @@ public class Projectile extends Spell{
 	var hitEffect: GameObject;
 	var hitEffectInstance: GameObject;
 	
+	function Projectile(){
+	
+	}
+	
 	function fire(){
-		projectileInstance = GameObject.Instantiate(projectile, spawnObject.transform.localPosition + (spawnObject.transform.forward * forwardMultiplier), spawnObject.transform.rotation);	
+		projectileInstance = GameObject.Instantiate(projectile, castedFrom.transform.position + (castedFrom.transform.forward * forwardMultiplier), castedFrom.transform.rotation);	
 		projectileInstance.GetComponent(ProjectileObjectBase).parentProjectile = this;
 	}
 	
@@ -35,16 +39,3 @@ public class Projectile extends Spell{
 		}
 	}
 }
-
-//var projectile: Projectile;
-//
-//function OnCollisionEnter (col : Collision){
-////	    if(col.gameObject.name == "prop_powerCube")
-////	    {
-//        Destroy(col.gameObject);
-////	    }
-//}
-//
-//function Update(){
-//	projectile.forward();
-//}

@@ -1,15 +1,18 @@
-﻿#pragma strict
+#pragma strict
 
-var fireBall: Projectile;
+public class FireBall extends Spell{
 
-function Start () {
-	fireBall.spawnObject = transform;
-	fireBall.fire();
-	fireBall.projectileInstance.transform.parent = transform;
-}
+	var fireBall: Projectile;
 
-function Update () {
-	if(fireBall.collide){
-		Destroy(gameObject);
+	function Start () {
 	}
+	
+	public function Activate(){
+		fireBall.castedFrom = castedFrom;
+		fireBall.fire();
+	}
+
+	function Update () {
+	}
+
 }
