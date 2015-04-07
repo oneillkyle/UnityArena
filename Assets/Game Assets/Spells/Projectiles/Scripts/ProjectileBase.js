@@ -11,21 +11,18 @@ public class Projectile{
 	var destroyProjectileOnHit: boolean = true;
 	var hitEffect: GameObject;
 	var hitEffectInstance: GameObject;
+	var damage: int;
 	
-	function Projectile(){
-	
-	}
-	
-	function fire(){
+	function Fire(){
 		projectileInstance = GameObject.Instantiate(projectile, castedFrom.transform.position + (castedFrom.transform.forward * forwardMultiplier), castedFrom.transform.rotation);	
 		projectileInstance.GetComponent(ProjectileObjectBase).parentProjectile = this;
 	}
 	
-	function forward(){
+	function Forward(){
 		projectileInstance.GetComponent.<Rigidbody>().AddForce(projectileInstance.transform.forward * velocity);
 	}
 	
-	function hit(col: Collision){
+	function Hit(col: Collision){
 		collide = true;
 		collision = col;
 		if(destroyProjectileOnHit){
@@ -36,6 +33,21 @@ public class Projectile{
 			var rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
 			var pos = contact.point;
 			hitEffectInstance = GameObject.Instantiate(hitEffect, pos, rot);
+			hitEffectInstance.GetComponent(SpellEffect).damage = damage;
 		}
+	}
+	
+	function Clone(proj: Projectile){
+		proj.velocity = velocity;
+		proj.projectile = projectile;
+		proj.castedFrom = castedFrom;
+		proj.forwardMultiplier = forwardMultiplier;
+		proj.collide = collide;
+		proj.collision = collision;
+		proj.projectileInstance = projectileInstance;
+		proj.destroyProjectileOnHit = destroyProjectileOnHit;
+		proj.hitEffect = hitEffect;
+		proj.hitEffectInstance = hitEffectInstance;
+		return proj;
 	}
 }

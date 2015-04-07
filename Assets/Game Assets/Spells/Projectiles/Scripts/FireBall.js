@@ -8,8 +8,11 @@ public class FireBall extends Spell{
 	}
 	
 	public function Activate(){
-		fireBall.castedFrom = castedFrom;
-		fireBall.fire();
+		var fire: Projectile = new Projectile();
+		fire = fireBall.Clone(fire);
+		fire.castedFrom = castedFrom;
+		fire.damage = damage;
+		fire.Fire();
 	}
 
 	function Update () {

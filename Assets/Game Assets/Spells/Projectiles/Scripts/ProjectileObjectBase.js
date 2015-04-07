@@ -7,12 +7,12 @@ function Start () {
 
 function Update () {
 	if(parentProjectile){
-		parentProjectile.forward();
+		parentProjectile.Forward();
 	}
 }
 
 function OnCollisionEnter (col : Collision){
 //    if(col.gameObject.name == "prop_powerCube")
 //    {
-	parentProjectile.hit(col);
+	parentProjectile.Hit(col);
 }
